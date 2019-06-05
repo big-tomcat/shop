@@ -88,6 +88,11 @@
 	   <!-- 注入service  -->
 	   <property name="productService" ref="productService"/>
 	</bean>
+	
+	<!-- 购物车的action -->
+	<bean id="cartAction" class="cn.itlu.shop.cart.action.CartAction" scope="prototype">
+	    <property name="productService" ref="productService"/>
+	</bean>
 
 	<!-- service的配置==================================== -->
 	<bean id="userService" class="cn.itlu.shop.user.service.UserService">

@@ -1,5 +1,6 @@
 package cn.itlu.shop.category.vo;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -8,7 +9,7 @@ import cn.itlu.shop.categorysecond.vo.CategorySecond;
 /*
  * 一级分类的实体类对象
  */
-public class Category {
+public class Category implements Serializable{
 	private Integer cid;
 	private String cname;
 	//一级分类中存放二级分类的集合
