@@ -21,14 +21,20 @@
 			<result name="loginPage">/WEB-INF/jsp/login.jsp</result>
 			<result name="login">WEB-INF/jsp/login.jsp</result>
 			<result name="loginSuccess" type="redirectAction">index</result>
-			<!--redirectAction重定向到首页  -->
+			<!--redirectAction重定向到首页 -->
 			<result name="quit" type="redirectAction">index</result>
 			<result name="checkcodeFail">/WEB-INF/jsp/regist.jsp</result>
 
 		</action>
-		
+
 		<!-- 验证码action -->
 		<action name="checkImg" class="checkImgAction"></action>
-		
+
+		<!--商品模块Action -->
+		<action name="product_*" class="productAction" method="{1}">
+			<result name="findByPid">/WEB-INF/jsp/product.jsp</result>
+			<result name="findByCid">/WEB-INF/jsp/productList.jsp</result>
+			<result name="findByCsid">/WEB-INF/jsp/productList.jsp</result>
+		</action>
 	</package>
 </struts>
