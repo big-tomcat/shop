@@ -65,8 +65,10 @@
 	<!-- 首页访问的Action -->
 	<bean id="indexAction" class="cn.itlu.shop.index.action.IndexAction"
 		scope="prototype">
-
 	</bean>
+	
+	<!--配置验证码action -->
+	<bean id="checkImgAction" class="cn.itlu.shop.user.action.CheckImageAction" scope="prototype"></bean>
 	<!-- 用户模块的action -->
 	<bean id="userAction" class="cn.itlu.shop.user.action.UserAction"
 		scope="prototype">

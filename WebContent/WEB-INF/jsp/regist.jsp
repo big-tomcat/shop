@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -69,6 +70,10 @@
 	}
 	return xmlHttp;
 }
+ function change() {
+	var checkImg = document.getElementById("checkImg");
+	checkImg.src="${pageContext.request.contextPath}/checkImg.action?"+'&='+new Date().getTime();
+}
   
 </script>
 
@@ -77,9 +82,6 @@
 <div class="container header">
 	<div class="span5">
 		<div class="logo">
-			<a href="http://localhost:8080/mango/">
-				<img src="${pageContext.request.contextPath}/image/r___________renleipic_01/logo.gif" alt="传智播客">
-			</a>
 		</div>
 	</div>
 	<div class="span9">
@@ -96,7 +98,8 @@
 					<div class="title">
 						<strong>会员注册</strong>USER REGISTER
 					</div>
-					<form id="registerForm"  method="post" novalidate="novalidate" onsubmit="return checkForm();">
+					<div><s:actionerror /></div>
+					<form id="registerForm" action="${pageContext.request.contextPath }/user_regist.action" method="post" novalidate="novalidate" onsubmit="return checkForm();">
 						<table>
 							<tbody><tr>
 								<th>
@@ -113,6 +116,7 @@
 								</th>
 								<td>
 									<input type="password" id="password" name="password" class="text" maxlength="20" autocomplete="off">
+								    <span><s:fielderror fieldName="password"/></span>
 								</td>
 							</tr>
 							<tr>
@@ -137,6 +141,7 @@
 										</th>
 										<td>
 												<input type="text" name="name" class="text" maxlength="200">
+										         <span><s:fielderror fieldName="name"/></span>
 										</td>
 									</tr>
 									
@@ -155,6 +160,7 @@
 										</th>
 										<td>
 												<input type="text" name="addr" class="text" maxlength="200">
+												<span><s:fielderror fieldName="addr"/></span>
 										</td>
 									</tr>
 								<tr>
@@ -163,7 +169,7 @@
 									</th>
 									<td>
 										<span class="fieldSet">
-											<input type="text" id="captcha" name="captcha" class="text captcha" maxlength="4" autocomplete="off"><img id="captchaImage" class="captchaImage" src="${pageContext.request.contextPath}/image/captcha.jhtml" title="点击更换验证码">
+											<input type="text" id="checkcode" name="checkcode" class="text captcha" maxlength="4" autocomplete="off"><img id="checkImg" class="captchaImage" src="${pageContext.request.contextPath}/checkImg" onclick="change()" ontitle="点击更换验证码">
 										</span>
 									</td>
 								</tr>

@@ -13,5 +13,7 @@ public class IndexAction extends ActionSupport{
 		System.out.println("index.action.......");
 		return "index";
 	}
+	
+	
 
 }

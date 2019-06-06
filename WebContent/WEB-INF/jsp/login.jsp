@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%@ taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- saved from url=(0080)http://localhost:8080/mango/login.jhtml?redirectUrl=%2Fmango%2Fcart%2Flist.jhtml -->
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -5,9 +8,24 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <title>会员登录</title>
 
-<link href="./css/common.css" rel="stylesheet" type="text/css"/>
-<link href="./css/login.css" rel="stylesheet" type="text/css"/>
-
+<link href="${pageContext.request.contextPath}/css/common.css" rel="stylesheet" type="text/css"/>
+<link href="${pageContext.request.contextPath}/css/login.css" rel="stylesheet" type="text/css"/>
+<script>
+function checkFrom(){
+	//校验用户名，获得用户名文本框的值
+	var username = document.getElementById("username").value;
+	if(username == null || username == ''){
+		alert("用户名不为空！");
+		return false;
+	}
+	//校验密码，获得密码文本框的值
+	var password = document.getElementById("password").value;
+	if(password == null||password ==''){
+		alert("密码不能为空");
+		return false;
+	}
+}
+</script>
 
 </head>
 <body>
@@ -15,100 +33,37 @@
 <div class="container header">
 	<div class="span5">
 		<div class="logo">
-			<a href="http://localhost:8080/mango/">
-				<img src="./image/r___________renleipic_01/logo.gif" alt="传智播客">
-			</a>
 		</div>
 	</div>
 	<div class="span9">
 <div class="headerAd">
-					<img src="./image/header.jpg" width="320" height="50" alt="正品保障" title="正品保障">
+					<img src="${pageContext.request.contextPath}/image/header.jpg" width="320" height="50" alt="正品保障" title="正品保障">
 </div>	</div>
-	<div class="span10 last">
-		<div class="topNav clearfix">
-			<ul>
-				<li id="headerLogin" class="headerLogin" style="display: list-item;">
-					<a href="./会员登录.htm">登录</a>|
-				</li>
-				<li id="headerRegister" class="headerRegister" style="display: list-item;">
-					<a href="./会员注册.htm">注册</a>|
-				</li>
-				<li id="headerUsername" class="headerUsername"></li>
-				<li id="headerLogout" class="headerLogout">
-					<a href="./index.htm">[退出]</a>|
-				</li>
-						<li>
-							<a >会员中心</a>
-							|
-						</li>
-						<li>
-							<a >购物指南</a>
-							|
-						</li>
-						<li>
-							<a>关于我们</a>
-							
-						</li>
-			</ul>
-		</div>
-		<div class="cart">
-			<a href="./购物车.htm">购物车</a>
-		</div>
-			<div class="phone">
-				客服热线:
-				<strong>96008/53277764</strong>
-			</div>
-	</div>
-	<div class="span24">
-		<ul class="mainNav">
-					<li>
-						<a href="./index.htm">首页</a>
-						|
-					</li>
-					<li>
-						<a href="./蔬菜分类.htm">定制套餐</a>
-						|
-					</li>
-					<li>
-						<a >安全频道</a>
-						|
-					</li>
-					<li>
-						<a >亿家卡</a>
-						|
-					</li>
-					<li>
-						<a >蔬菜基地</a>
-						|
-					</li>
-					<li>
-						<a >节气养生</a>
-						|
-					</li>
-					<li>
-						<a>便民服务</a>
-						|
-					</li>
-					
-		</ul>
-	</div>
+	
+	<%@include file="menu.jsp" %>
 	
 </div>	<div class="container login">
 		<div class="span12">
 <div class="ad">
-					<img src="./image/login.jpg" width="500" height="330" alt="会员登录" title="会员登录">
+					<img src="${pageContext.request.contextPath}/image/login.jpg" width="500" height="330" alt="会员登录" title="会员登录">
 </div>		</div>
 		<div class="span12 last">
 			<div class="wrap">
 				<div class="main">
 					<div class="title">
-						<strong>会员登录</strong>USER LOGIN 
+						<strong>会员登录</strong>USER LOGIN 						
 					</div>
-					<form id="loginForm"  method="post" novalidate="novalidate">
+					<div><s:actionerror /></div>
+					<div class="title">
+						<strong>
+						<s:actionerror />
+						</strong>
+					</div>
+					<form id="loginForm" action="${pageContext.request.contextPath }/user_login.action" method="post" novalidate="novalidate" onsubmit="return checkFrom()">
 						<table>
 							<tbody><tr>
 								<th>
-										用户名/E-mail:
+										用户名:
 								</th>
 								<td>
 									<input type="text" id="username" name="username" class="text" maxlength="20">
@@ -123,16 +78,16 @@
 									<input type="password" id="password" name="password" class="text" maxlength="20" autocomplete="off">
 								</td>
 							</tr>
-								<tr>
+								<%-- <tr>
 									<th>
 										验证码:
 									</th>
 									<td>
 										<span class="fieldSet">
-											<input type="text" id="captcha" name="captcha" class="text captcha" maxlength="4" autocomplete="off"><img id="captchaImage" class="captchaImage" src="./image/captcha.jhtml" title="点击更换验证码">
+											<input type="text" id="captcha" name="captcha" class="text captcha" maxlength="4" autocomplete="off"><img id="captchaImage" class="captchaImage" src="${pageContext.request.contextPath}/image/captcha.jhtml" title="点击更换验证码">
 										</span>
 									</td>
-								</tr>
+								</tr> --%>
 							<tr>
 								<th>&nbsp;
 									
@@ -176,7 +131,7 @@
 	</div>
 <div class="container footer">
 	<div class="span24">
-	  <div class="footerAd"><img src="./image/footer.jpg" width="950" height="52" alt="我们的优势" title="我们的优势" /></div>	
+	  <div class="footerAd"><img src="${pageContext.request.contextPath}/image/footer.jpg" width="950" height="52" alt="我们的优势" title="我们的优势" /></div>	
 	</div>
 	<div class="span24">
 		<ul class="bottomNav">
