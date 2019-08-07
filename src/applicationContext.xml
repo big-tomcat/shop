@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+     http://www.springframework.org/schema/beans/spring-beans.xsd
+     http://www.springframework.org/schema/context
+     http://www.springframework.org/schema/context/spring-context.xsd
+     http://www.springframework.org/schema/aop
+     http://www.springframework.org/schema/aop/spring-aop.xsd
+     http://www.springframework.org/schema/tx
+     http://www.springframework.org/schema/tx/spring-tx.xsd">
+     
+     <!-- 引入外部属性文件 -->
+     <context:property-placeholder location="classpath:db.properties"/>
+     <!-- 配置连接池 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+	<property name="driverClass" value="${jdbc.driverClass}"/>
+	<property name="jdbcUrl" value="${jdbc.url}"/>
+	<property name="user" value="${jdbc.user}"/>
+	<property name="password" value="${jdbc.password}"/>
+	</bean>
+	
+	<!-- 配置hibernate的相关信息sessionFactory -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<!-- 注入连接池 -->
+		<property name="dataSource" ref="dataSource"/>
+		<!-- 配置hibernate其他属性  -->
+		<property name="hibernateProperties">
+			<props>
+				<!--输出底层SQL语句 -->
+				<prop key="hibernate.show_sql">true</prop>
+				<!--输出底层SQL语句格式 -->
+				<prop key="hibernate.format_sql">true</prop>
+				<!--hibernate帮创建表,需要配置之后 update:如果已经有表，会更新，如果没有，就创建 -->
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<!--配置数据库方言 在mysql里面实现分页 关键字limit，只能使用mysql里面 在Oracle数据库，实现分页rownum,让hibernate框架识别不同数据库的自己特有的语句 -->
+				<!--在hiberate核心配置文件中配置 (配置session绑定本地线程) -->
+				<prop key="hibernate.current_session_context_class">org.springframework.orm.hibernate5.SpringSessionContext
+				</prop>
+			</props>
+		</property>
+		
+		<!-- 配置hibernate的映射文件 -->
+		
+	</bean>
+	
+	<!-- 事务管理 -->
+	<!-- 事务管理器 -->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+	  <property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<!-- 开启注解事务  -->
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	
+	<!-- Action的配置===================================== -->
+	
+	<!-- 首页访问的Action -->
+	<bean id="indexAction" class="cn.itlu.shop.index.action.IndexAction" scope="prototype">
+	 
+	</bean>
+	
+	<!-- service的配置==================================== -->
+	
+	<!-- Dao的配置======================================== -->
+</beans>
+
+
+
+
+
+
+
+
+
