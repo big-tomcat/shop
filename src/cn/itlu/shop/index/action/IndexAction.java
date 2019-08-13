@@ -3,11 +3,11 @@ package cn.itlu.shop.index.action;
 import com.opensymphony.xwork2.ActionSupport;
 
 /*
- * Ê×Ò³·ÃÎÊaction
+ * ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½action
  */
 public class IndexAction extends ActionSupport{
 	/*
-	 * Ö´ÐÐµÄ·ÃÎÊÊ×Ò³µÄ·½·¨
+	 * Ö´ï¿½ÐµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½Ä·ï¿½ï¿½ï¿½
 	 */
 	public String execute(){
 		System.out.println("index.action.......");
