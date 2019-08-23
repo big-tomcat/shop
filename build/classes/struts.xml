@@ -9,17 +9,19 @@
 		<!-- 配置全局 -->
 		<global-results>
 			<result name="msg">/WEB-INF/jsp/msg.jsp</result>
+			<result name="login">WEB-INF/jsp/login.jsp</result>
 		</global-results>
+
 		<!-- 配置首页访问的Action -->
 		<action name="index" class="indexAction">
 			<result name="index">/WEB-INF/jsp/index.jsp</result>
 		</action>
+
 		<!-- 配置用户模块的action -->
 		<action name="user_*" class="userAction" method="{1}">
 			<result name="registPage">/WEB-INF/jsp/regist.jsp</result>
 			<result name="input">/WEB-INF/jsp/regist.jsp</result>
 			<result name="loginPage">/WEB-INF/jsp/login.jsp</result>
-			<result name="login">WEB-INF/jsp/login.jsp</result>
 			<result name="loginSuccess" type="redirectAction">index</result>
 			<!--redirectAction重定向到首页 -->
 			<result name="quit" type="redirectAction">index</result>
@@ -36,14 +38,22 @@
 			<result name="findByCid">/WEB-INF/jsp/productList.jsp</result>
 			<result name="findByCsid">/WEB-INF/jsp/productList.jsp</result>
 		</action>
-		
+
 		<!-- 购物车的action -->
 		<action name="cart_*" class="cartAction" method="{1}">
-		    <result name="addCart">/WEB-INF/jsp/cart.jsp</result>
-		    <result name="clearCart">/WEB-INF/jsp/cart.jsp</result>
-		    <result name="removeCart">/WEB-INF/jsp/cart.jsp</result>
-		    <result name="myCart">/WEB-INF/jsp/cart.jsp</result>
+			<result name="addCart">/WEB-INF/jsp/cart.jsp</result>
+			<result name="clearCart">/WEB-INF/jsp/cart.jsp</result>
+			<result name="removeCart">/WEB-INF/jsp/cart.jsp</result>
+			<result name="myCart">/WEB-INF/jsp/cart.jsp</result>
 		</action>
-		
+
+		<!-- 订单action -->
+		<action name="order_*" class="orderAction" method="{1}">
+			<result name="saveSuccess">/WEB-INF/jsp/order.jsp</result>
+			<result name="findByUidSucess">/WEB-INF/jsp/orderList.jsp</result>
+			<result name="findByOidSuccess">/WEB-INF/jsp/order.jsp</result>
+
+		</action>
+
 	</package>
 </struts>

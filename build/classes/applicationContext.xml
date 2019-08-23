@@ -49,7 +49,9 @@
 				<value>cn/itlu/shop/category/vo/Category.hbm.xml</value>
 				<value>cn/itlu/shop/product/vo/Product.hbm.xml</value>
 				<value>cn/itlu/shop/categorysecond/vo/CategorySecond.hbm.xml</value>
-			</list>				
+				<value>cn/itlu/shop/order/vo/Order.hbm.xml</value>
+				<value>cn/itlu/shop/order/vo/OrderItem.hbm.xml</value>
+			</list>
 		</property>
 
 	</bean>
@@ -82,16 +84,25 @@
 		<!--注入Service -->
 		<property name="userService" ref="userService" />
 	</bean>
-	
+
 	<!-- 商品模块的Action -->
-	<bean id="productAction" class="cn.itlu.shop.product.action.ProductAction" scope="prototype">
-	   <!-- 注入service  -->
-	   <property name="productService" ref="productService"/>
+	<bean id="productAction" class="cn.itlu.shop.product.action.ProductAction"
+		scope="prototype">
+		<!-- 注入service -->
+		<property name="productService" ref="productService" />
 	</bean>
-	
+
 	<!-- 购物车的action -->
-	<bean id="cartAction" class="cn.itlu.shop.cart.action.CartAction" scope="prototype">
-	    <property name="productService" ref="productService"/>
+	<bean id="cartAction" class="cn.itlu.shop.cart.action.CartAction"
+		scope="prototype">
+		<property name="productService" ref="productService" />
+	</bean>
+
+	<!-- 订单模块Action -->
+	<bean id="orderAction" class="cn.itlu.shop.order.action.OrderAction"
+		scope="prototype">
+		<property name="orderService" ref="orderService" />
+
 	</bean>
 
 	<!-- service的配置==================================== -->
@@ -99,23 +110,35 @@
 		<!-- 注入dao -->
 		<property name="userDao" ref="userDao" />
 	</bean>
+
 	<bean id="categoryService" class="cn.itlu.shop.category.service.CategoryService">
 		<!-- 注入dao -->
 		<property name="categoryDao" ref="categoryDao" />
 	</bean>
+
 	<bean id="productService" class="cn.itlu.shop.product.service.ProductService">
 		<!-- 注入dao -->
 		<property name="productDao" ref="productDao" />
+	</bean>
+
+	<bean id="orderService" class="cn.itlu.shop.order.service.OrderService">
+		<property name="orderDao" ref="orderDao" />
 	</bean>
 
 	<!-- Dao的配置======================================== -->
 	<bean id="userDao" class="cn.itlu.shop.user.dao.UserDao">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+
 	<bean id="categoryDao" class="cn.itlu.shop.category.dao.CategoryDao">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+
 	<bean id="productDao" class="cn.itlu.shop.product.dao.ProductDao">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="orderDao" class="cn.itlu.shop.order.dao.OrderDao">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 

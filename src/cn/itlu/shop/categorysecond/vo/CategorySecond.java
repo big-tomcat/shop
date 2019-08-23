@@ -1,5 +1,6 @@
 package cn.itlu.shop.categorysecond.vo;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
