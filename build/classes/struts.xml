@@ -52,8 +52,21 @@
 			<result name="saveSuccess">/WEB-INF/jsp/order.jsp</result>
 			<result name="findByUidSucess">/WEB-INF/jsp/orderList.jsp</result>
 			<result name="findByOidSuccess">/WEB-INF/jsp/order.jsp</result>
-
 		</action>
+
+		<!--配置后台登录的Action -->
+		<action name="adminUser_*" class="adminUserAction" method="{1}">
+			<result name="loginFail">/admin/index.jsp</result>
+			<result name="loginSuccess">/admin/home.jsp</result>
+		</action>
+
+		<!--配置后台一级分类管理的Action -->
+		<action name="adminCategory_*" class="adminCategoryAction"
+			method="{1}">
+			<result name="findAll">/admin/categoty/list.jsp</result>
+		</action>
+
+
 
 	</package>
 </struts>
