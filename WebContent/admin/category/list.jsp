@@ -7,7 +7,7 @@
 		<link href="${pageContext.request.contextPath}/css/Style1.css" rel="stylesheet" type="text/css" />
 		<script language="javascript" src="${pageContext.request.contextPath}/js/public.js"></script>
 		<script type="text/javascript">
-			function addUser(){
+			function addCategory(){
 				window.location.href = "${pageContext.request.contextPath}/admin/category/add.jsp";
 			}
 		</script>
@@ -24,7 +24,7 @@
 					</tr>
 					<tr>
 						<td class="ta_01" align="right">
-							<button type="button" id="add" name="add" value="添加" class="button_add" onclick="addUser()">
+							<button type="button" id="add" name="add" value="添加" class="button_add" onclick="addCategory()">
 &#28155;&#21152;
 </button>
 
@@ -81,6 +81,8 @@
 				</TBODY>
 			</table>
 		</form>
+		
+		
 	</body>
 </HTML>
 
