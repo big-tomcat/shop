@@ -64,8 +64,20 @@
 		<action name="adminCategory_*" class="adminCategoryAction"
 			method="{1}">
 			<result name="findAll">/admin/category/list.jsp</result>
-			<result name="saveSuccess" type="redirectAction">adminCategory_findAll.action</result>
-			<result name="deleteSuccess" type="redirectAction">adminCategory_findAll.action</result>
+			<result name="saveSuccess" type="redirectAction">adminCategory_findAll.action
+			</result>
+			<result name="deleteSuccess" type="redirectAction">adminCategory_findAll.action
+			</result>
+			<result name="editSuccess">/admin/category/edit.jsp</result>
+			<result name="updateSuccess" type="redirectAction">adminCategory_findAll.action
+			</result>
+		</action>
+
+		<!--配置后台二级分类管理的action -->
+		<action name="adminCategorySecond_*" class="adminCategorySecondAction"
+			method="{1}">
+			<result name="findAll">/admin/categorysecond/list.jsp</result>
+			<result name="addPageSuccess">/admin/categorysecond/add.jsp</result>
 		</action>
 
 

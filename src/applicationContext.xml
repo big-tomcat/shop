@@ -119,6 +119,14 @@
 		<property name="categoryService" ref="categoryService" />
 	</bean>
 
+	<!--后台二级分类的action -->
+	<bean id="adminCategorySecondAction"
+		class="cn.itlu.shop.categorysecond.adminAction.AdminCategorySecondAction"
+		scope="prototype">
+		<property name="categorySecondService" ref="categorySecondService" />
+		<property name="categoryService" ref="categoryService" />
+	</bean>
+
 
 
 	<!-- service的配置==================================== -->
@@ -148,6 +156,15 @@
 		<property name="adminUserDao" ref="adminUserDao" />
 	</bean>
 
+	<!-- 后台二级分类的service -->
+	<bean id="categorySecondService"
+		class="cn.itlu.shop.categorysecond.service.CategorySecondService">
+		<property name="categorySecondDao" ref="categorySecondDao" />
+	</bean>
+
+
+
+
 	<!-- Dao的配置======================================== -->
 	<bean id="userDao" class="cn.itlu.shop.user.dao.UserDao">
 		<property name="sessionFactory" ref="sessionFactory" />
@@ -168,6 +185,11 @@
 
 	<!--后台登录的Dao -->
 	<bean id="adminUserDao" class="cn.itlu.shop.adminuser.dao.AdminUserDao">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<!--后台二级分类的dao -->
+	<bean id="categorySecondDao" class="cn.itlu.shop.categorysecond.dao.CategorySecondDao">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 

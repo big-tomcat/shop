@@ -28,6 +28,8 @@
 		d.add('010101','0101','用户管理','','','mainFrame');
 		d.add('0102','01','一级分类管理');
 		d.add('010201','0102','一级分类管理','${pageContext.request.contextPath}/adminCategory_findAll.action','','mainFrame');
+		d.add('0103','01','二级分类管理');
+		d.add('010301','0103','二级分类管理','${pageContext.request.contextPath}/adminCategorySecond_findAll.action?page=1','','mainFrame');
 		document.write(d);
 		//-->
 	</script>

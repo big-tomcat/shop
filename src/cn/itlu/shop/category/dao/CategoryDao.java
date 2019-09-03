@@ -36,4 +36,10 @@ public class CategoryDao extends HibernateDaoSupport{
 		
 	}
 
+	//dao层修改一级分类的方法
+	public void update(Category category) {
+		this.getHibernateTemplate().update(category);
+		
+	}
+
 }

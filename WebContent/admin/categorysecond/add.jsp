@@ -8,30 +8,41 @@
 	</HEAD>
 	
 	<body>
-		<form id="userAction_save_do" name="Form1" action="${pageContext.request.contextPath}/adminCategory_update.action" method="post" enctype="multipart/form-data">
-			<input type="hidden" name="cid" value="<s:property value="model.cid"/>"/>
+		<form id="userAction_save_do" name="Form1" action="${pageContext.request.contextPath}/adminCategory_save.action" method="post" >
 			&nbsp;
 			<table cellSpacing="1" cellPadding="5" width="100%" align="center" bgColor="#eeeeee" style="border: 1px solid #8ba7e3" border="0">
 				<tr>
 					<td class="ta_01" align="center" bgColor="#afd1f3" colSpan="4"
 						height="26">
-						<STRONG>编辑一级分类</STRONG>
+						<STRONG>添加二级分类</STRONG>
+						
 					</td>
 				</tr>
 
 				<tr>
 					<td width="18%" align="center" bgColor="#f5fafe" class="ta_01">
-						一级分类名称：
+						二级分类名称：
 					</td>
-					<td class="ta_01" bgColor="#ffffff" colspan="3">
-						<input type="text" name="cname" value="<s:property value="model.cname"/>" id="userAction_save_do_logonName" class="bg"/>
-						</td>
+					<td class="ta_01" bgColor="#ffffff" >
+						<input type="text" name="csname" value=""   class="bg"/>
+					</td>
+					
+					<td width="18%" align="center" bgColor="#f5fafe" class="ta_01">
+						所属的一级分类：
+					</td>
+					<td class="ta_01" bgColor="#ffffff" >
+						<select name="category.cid">
+						  <s:iterator var="c" value="cList">
+						     <option value="<s:property value="#c.cid"/>"><s:property value="#c.cname"/></option>
+						  </s:iterator>  
+						</select>
+					</td>
 				</tr>
 			
 				<tr>
 					<td class="ta_01" style="WIDTH: 100%" align="center"
 						bgColor="#f5fafe" colSpan="4">
-						<button type="submit" id="userAction_save_do_submit" value="确定" class="button_ok">
+						<button type="submit"  value="确定" class="button_ok">
 							&#30830;&#23450;
 						</button>
 

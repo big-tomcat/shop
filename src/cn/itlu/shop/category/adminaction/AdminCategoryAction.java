@@ -47,7 +47,7 @@ public class AdminCategoryAction extends ActionSupport implements ModelDriven<Ca
 		return "saveSuccess";
 	}
 	
-	//后台
+	//后台删除一级分类的方法
 	public String delete(){
 		//接受cid,可以使用模型驱动，删除一级分类，同时删除二级分类，必须先根据id查询再进行删除
 		//先查询
@@ -57,5 +57,20 @@ public class AdminCategoryAction extends ActionSupport implements ModelDriven<Ca
 		//页面跳转
 		return "deleteSuccess";
 	}
+	
+	//后台编辑一级分类的方法
+	public String edit(){
+		//根据一级分类管理去查询一级分类
+		category = categoryService.findByCid(category.getCid());
+				
+		return "editSuccess";
+	}
+	
+	//
+	public String update(){
+		categoryService.update(category);
+		return "updateSuccess";
+	}
+	
 
 }
