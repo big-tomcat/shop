@@ -9,8 +9,8 @@
 		</id>
 		<property name="cname" />
 		
-		<!-- 配置二级分类的集合 -->
-		<set order-by="csid" name="categorySeconds" lazy="false">
+		<!-- 配置二级分类的集合  cascade="delete"表示级联删除-->
+		<set order-by="csid" cascade="delete" name="categorySeconds" lazy="false">
 		 <key column="cid"/>
 		 <one-to-many class="cn.itlu.shop.categorysecond.vo.CategorySecond"/>
 		</set>

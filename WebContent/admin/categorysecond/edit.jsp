@@ -14,7 +14,7 @@
 				<tr>
 					<td class="ta_01" align="center" bgColor="#afd1f3" colSpan="4"
 						height="26">
-						<STRONG>添加二级分类</STRONG>
+						<STRONG>编辑二级分类</STRONG>
 						
 					</td>
 				</tr>
@@ -24,7 +24,7 @@
 						二级分类名称：
 					</td>
 					<td class="ta_01" bgColor="#ffffff" >
-						<input type="text" name="csname" value=""   class="bg"/>
+						<input type="text" name="csname" value="<s:property value="model.csname"/>"   class="bg"/>
 					</td>
 					
 					<td width="18%" align="center" bgColor="#f5fafe" class="ta_01">
@@ -33,7 +33,8 @@
 					<td class="ta_01" bgColor="#ffffff" >
 						<select name="category.cid">
 						  <s:iterator var="c" value="cList">
-						     <option value="<s:property value="#c.cid"/>"><s:property value="#c.cname"/></option>
+						 
+						     <option value="<s:property value="#c.cid"/>" <s:if test="model.category.cid==#c.cid">selected</s:if>>  <s:property value="#c.cname"/></option>
 						  </s:iterator>  
 						</select>
 					</td>

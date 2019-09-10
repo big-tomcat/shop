@@ -5,6 +5,7 @@ import java.util.List;
 
 
 
+
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 
 import cn.itlu.shop.categorysecond.vo.CategorySecond;
@@ -32,6 +33,24 @@ public class CategorySecondDao extends HibernateDaoSupport{
 			return list;
 		}
 		return null;
+	}
+
+	//dao层保存二级分类的方法
+	public void save(CategorySecond categorySecond) {
+		this.getHibernateTemplate().save(categorySecond);
+		
+	}
+
+	//dao层的根据二级分类的id查询二级分类
+	public CategorySecond findByCsid(Integer csid) {
+		return this.getHibernateTemplate().get(CategorySecond.class, csid);
+		
+	}
+
+	//dao层删除二级分类的方法
+	public void delete(CategorySecond categorySecond) {
+		this.getHibernateTemplate().delete(categorySecond);
+		
 	}
 
 }

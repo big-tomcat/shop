@@ -40,6 +40,13 @@ public class AdminCategorySecondAction extends ActionSupport implements ModelDri
 		this.page = page;
 	}
 
+	//注入一级分类
+		private CategoryService categoryService;
+		
+		
+		public void setCategoryService(CategoryService categoryService) {
+			this.categoryService = categoryService;
+		}
 
 	//查询二级分类的方法
 	public String findAll(){
@@ -49,23 +56,42 @@ public class AdminCategorySecondAction extends ActionSupport implements ModelDri
 		return "findAll";
 	}
 	
-	//注入一级分类
-	private CategoryService categoryService;
 	
-	
-	public void setCategoryService(CategoryService categoryService) {
-		this.categoryService = categoryService;
-	}
 
 
 	//跳转到添加页面
 	public String addPage(){
 		//查询所有一级分类
-		List<Category> clist = categoryService.findAll();
+		List<Category> cList = categoryService.findAll();
 		//简化数据显示到页面的下拉列表中
-		ActionContext.getContext().getValueStack().set("clist", clist);
+		ActionContext.getContext().getValueStack().set("cList", cList);
 		return "addPageSuccess";
 	}
 	
+	//保存二级分类的方法
+	public String save(){
+		categorySecondService.save(categorySecond);
+		return "saveSuccess";
+	}
+	
+	//删除二级分类的方法
+	public String delete(){
+		//如果级联删除，先查询再删除，配置cascade
+		categorySecond = categorySecondService.findByCsid(categorySecond.getCsid());
+		categorySecondService.delete(categorySecond);
+		return "deleteSuccess";
+	}
+	
+	//编辑二级分类的方法
+	public String edit(){
+		//根据二级分类id查询二级分类的对象
+		categorySecond = categorySecondService.findByCsid(categorySecond.getCsid());
+		//查询所有的一级分类
+		List<Category> cList = categoryService.findAll();
+		ActionContext.getContext().getValueStack().set("cList", cList);
+		System.out.println(cList);
+		return "editSuccess";
+		
+	}
 
 }
